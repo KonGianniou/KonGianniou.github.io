@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales Knowledge Base: Free Lite Edition</title>
+<style>
+:root{--bg:#F5F6F8;--card:#FFFFFF;--ink:#16181D;--muted:#565C6B;--line:#DCDFE6;--accent:#0F6B62;--on-accent:#FFFFFF;--accent-text:#0F6B62;--soft:color-mix(in srgb,#0F6B62 8%,#fff)}
+@media (prefers-color-scheme:dark){:root{--bg:#13151A;--card:#1B1E25;--ink:#ECEEF2;--muted:#A5ABB9;--line:#2C303A;--accent-text:#5CCBBE;--soft:color-mix(in srgb,#0F6B62 22%,#1B1E25)}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.55;font-size:16px}
+a{color:var(--accent-text)}
+:focus-visible{outline:3px solid var(--accent-text);outline-offset:2px;border-radius:4px}
+header{background:var(--accent);color:var(--on-accent);padding:40px 20px 34px}
+.wrap{max-width:860px;margin:0 auto}
+.pill{display:inline-block;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:600;margin-bottom:14px}
+h1{margin:0 0 10px;font-size:clamp(1.8rem,4.2vw,2.7rem);line-height:1.12;letter-spacing:-.02em;font-weight:780;max-width:22ch}
+header p{margin:0;font-size:1.05rem;max-width:56ch;opacity:.95}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.search{width:100%;height:54px;font:inherit;font-size:1.05rem;padding:0 16px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.search:focus{border-color:var(--accent-text);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-text) 30%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.chip{font:inherit;font-size:.9rem;font-weight:600;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.count{margin-left:auto;font-size:.85rem;color:var(--muted)}
+main{padding:22px 20px 10px}
+.personalize{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:22px}
+.personalize strong{display:block;margin-bottom:8px}
+.personalize .row{display:flex;flex-wrap:wrap;gap:10px}
+.personalize label{flex:1 1 200px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.personalize input{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+details.entry{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+details.entry[open]{border-color:var(--accent-text)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;padding:15px 18px;font-weight:650;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;font-weight:400;color:var(--accent-text);margin-left:auto;padding-left:10px}
+details[open] summary::after{content:"–"}
+.tag{font-size:.78rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.body{padding:2px 18px 18px}
+.when{color:var(--muted);margin:0 0 12px}
+ol{margin:0 0 14px;padding-left:22px}
+ol li{margin-bottom:6px;padding-left:4px}
+.say{border-left:4px solid var(--accent);background:var(--soft);border-radius:0 8px 8px 0;padding:12px 14px;margin:0 0 12px}
+.say b{display:block;font-size:.85rem;margin-bottom:4px;color:var(--accent-text)}
+.say p{margin:0 0 10px;font-style:italic}
+.copy{font:inherit;font-size:.85rem;font-weight:600;padding:5px 12px;border-radius:7px;border:1.5px solid var(--accent-text);background:transparent;color:var(--accent-text);cursor:pointer}
+.copy:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.tip{margin:0;font-size:.92rem;color:var(--muted)}
+.tip b{color:var(--ink)}
+.tok{background:color-mix(in srgb,var(--accent-text) 16%,transparent);border-radius:4px;padding:0 3px;font-style:normal;font-weight:600}
+.empty{text-align:center;padding:36px 10px;color:var(--muted)}
+.upsell{background:var(--accent);color:var(--on-accent);border-radius:14px;padding:26px 24px;margin:26px 0}
+.upsell h2{margin:0 0 8px;font-size:1.35rem;letter-spacing:-.01em}
+.upsell p{margin:0 0 16px;max-width:60ch}
+.btn{display:inline-block;background:#fff;color:#16181D;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:9px}
+.btn:hover{background:#F1F3F7}
+footer{padding:6px 20px 44px;color:var(--muted);font-size:.85rem}
+footer p{margin:0 0 8px}
+@media print{header,.bar,.personalize,.upsell,.copy{display:none!important}body{background:#fff}details.entry{break-inside:avoid;border-color:#bbb}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="pill">Free Lite Edition</span>
+<h1>Sales Knowledge Base</h1>
+<p>Quick-reference scripts and procedures for cold-calling and inbound sales teams.</p>
+</div></header>
+
+<div class="bar"><div class="wrap">
+<input id="q" class="search" type="search" placeholder="Type a situation: price objection, voicemail, first call…" aria-label="Search this knowledge base" autocomplete="off">
+<div class="chips" id="chips">
+<button class="chip" aria-pressed="true" data-cat="All">All</button>
+<button class="chip" aria-pressed="false" data-cat="Opening a call">Opening a call</button>
+<button class="chip" aria-pressed="false" data-cat="Objections">Objections</button>
+<button class="chip" aria-pressed="false" data-cat="Call procedures">Call procedures</button>
+<span class="count" id="count" aria-live="polite"></span>
+</div>
+</div></div>
+
+<main><div class="wrap">
+<div class="personalize">
+<strong>Make the scripts yours</strong>
+<div class="row">
+<label>Your name<input id="agent" type="text" placeholder="e.g. Maria" autocomplete="off"></label>
+<label>Your company<input id="company" type="text" placeholder="e.g. Acme Ltd" autocomplete="off"></label>
+</div>
+</div>
+
+<div id="list">
+<details class="entry" data-cat="Opening a call" data-text="cold call opener the first 15 seconds of a call with someone who is not expecting you. greet them by name and say who you are and your company. give one sentence on why you are calling, focused on their problem, not your product. ask permission for 30 seconds and let them say no. hi contact, it&#x27;s agent from company. i know i&#x27;m calling out of the blue. i help [type of business] with [one specific problem]. do you have 30 seconds for me to explain why i called, and you can tell me if it&#x27;s relevant? sound relaxed. asking permission lowers resistance more than a perfect pitch does. opening a call"><summary><span>Cold call opener</span><span class="tag">Opening a call</span></summary><div class="body"><p class="when">The first 15 seconds of a call with someone who is not expecting you.</p><ol><li>Greet them by name and say who you are and your company.</li><li>Give one sentence on why you are calling, focused on their problem, not your product.</li><li>Ask permission for 30 seconds and let them say no.</li></ol><div class="say"><b>Say this</b><p id="s0">Hi [customer's name], it&#x27;s <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> from <span class="tok" data-k="company" data-ph="[your company]">[your company]</span>. I know I&#x27;m calling out of the blue. I help [type of business] with [one specific problem]. Do you have 30 seconds for me to explain why I called, and you can tell me if it&#x27;s relevant?</p><button class="copy" data-target="s0" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Sound relaxed. Asking permission lowers resistance more than a perfect pitch does.</p></div></details>
+<details class="entry" data-cat="Opening a call" data-text="responding to an inbound lead someone filled in a form, emailed or called asking about your service. respond quickly. aim for minutes, not hours. thank them and repeat what they asked about so they know you read it. ask two qualifying questions: what prompted the enquiry, and when they need a solution. agree the next step (call, demo or quote) and put a date on it. hi contact, thanks for getting in touch. you asked about [topic]. so i can point you in the right direction: what&#x27;s prompted this, and when are you hoping to have something in place? speed matters most. a fast, decent reply beats a slow, perfect one. opening a call"><summary><span>Responding to an inbound lead</span><span class="tag">Opening a call</span></summary><div class="body"><p class="when">Someone filled in a form, emailed or called asking about your service.</p><ol><li>Respond quickly. Aim for minutes, not hours.</li><li>Thank them and repeat what they asked about so they know you read it.</li><li>Ask two qualifying questions: what prompted the enquiry, and when they need a solution.</li><li>Agree the next step (call, demo or quote) and put a date on it.</li></ol><div class="say"><b>Say this</b><p id="s1">Hi [customer's name], thanks for getting in touch. You asked about [topic]. So I can point you in the right direction: what&#x27;s prompted this, and when are you hoping to have something in place?</p><button class="copy" data-target="s1" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Speed matters most. A fast, decent reply beats a slow, perfect one.</p></div></details>
+<details class="entry" data-cat="Objections" data-text="&quot;just send me an email&quot; a polite way of ending the call. turn it into a useful next step. agree, so there is no friction. ask one question so the email is relevant. confirm their email address. agree when you will follow up before hanging up. happy to. so i send something useful and not a generic brochure, what&#x27;s the one thing you&#x27;d most want it to cover? … and if i follow up on thursday, is morning or afternoon better? the follow-up date is the important part. without it, the email usually goes nowhere. objections"><summary><span>&quot;Just send me an email&quot;</span><span class="tag">Objections</span></summary><div class="body"><p class="when">A polite way of ending the call. Turn it into a useful next step.</p><ol><li>Agree, so there is no friction.</li><li>Ask one question so the email is relevant.</li><li>Confirm their email address.</li><li>Agree when you will follow up before hanging up.</li></ol><div class="say"><b>Say this</b><p id="s2">Happy to. So I send something useful and not a generic brochure, what&#x27;s the one thing you&#x27;d most want it to cover? … And if I follow up on Thursday, is morning or afternoon better?</p><button class="copy" data-target="s2" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> The follow-up date is the important part. Without it, the email usually goes nowhere.</p></div></details>
+<details class="entry" data-cat="Objections" data-text="&quot;it&#x27;s too expensive&quot; the price feels high, or the customer is comparing you with something else. do not defend or discount straight away. ask what they are comparing the price with. connect the price to the cost of the problem they told you about. offer options (a smaller scope, a phased start) before a discount. i understand, and i&#x27;d rather it fit your budget. can i ask what you&#x27;re comparing it with? … earlier you said [problem] costs you about [amount] a month. if we solve that, how does the price look? a discount without a reason teaches customers to always ask for one. objections"><summary><span>&quot;It&#x27;s too expensive&quot;</span><span class="tag">Objections</span></summary><div class="body"><p class="when">The price feels high, or the customer is comparing you with something else.</p><ol><li>Do not defend or discount straight away.</li><li>Ask what they are comparing the price with.</li><li>Connect the price to the cost of the problem they told you about.</li><li>Offer options (a smaller scope, a phased start) before a discount.</li></ol><div class="say"><b>Say this</b><p id="s3">I understand, and I&#x27;d rather it fit your budget. Can I ask what you&#x27;re comparing it with? … Earlier you said [problem] costs you about [amount] a month. If we solve that, how does the price look?</p><button class="copy" data-target="s3" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> A discount without a reason teaches customers to always ask for one.</p></div></details>
+<details class="entry" data-cat="Objections" data-text="&quot;we already have a supplier&quot; they are not unhappy enough to look, so aim for a conversation, not a switch. respect the relationship. do not criticize the current supplier. ask what they would change if they could. if there is a gap, suggest a small trial or comparison, not a full switch. that&#x27;s good to hear, and i&#x27;m not asking you to change anything today. out of curiosity, if you could improve one thing about how it works now, what would it be? you are looking for one honest gap. if there is none, thank them and keep in touch. objections"><summary><span>&quot;We already have a supplier&quot;</span><span class="tag">Objections</span></summary><div class="body"><p class="when">They are not unhappy enough to look, so aim for a conversation, not a switch.</p><ol><li>Respect the relationship. Do not criticize the current supplier.</li><li>Ask what they would change if they could.</li><li>If there is a gap, suggest a small trial or comparison, not a full switch.</li></ol><div class="say"><b>Say this</b><p id="s4">That&#x27;s good to hear, and I&#x27;m not asking you to change anything today. Out of curiosity, if you could improve one thing about how it works now, what would it be?</p><button class="copy" data-target="s4" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> You are looking for one honest gap. If there is none, thank them and keep in touch.</p></div></details>
+<details class="entry" data-cat="Call procedures" data-text="voicemail script and logging every call nobody answers. leave a short message, then record the call. keep the voicemail under 25 seconds: name, company, reason, benefit, number. say your phone number slowly, twice. log the outcome, the next step and the date immediately after the call. set the follow-up reminder before starting the next call. hi contact, this is agent from company. i&#x27;m calling about [one reason relevant to them]. i&#x27;ll try you again on [day]. you can reach me on [number], that&#x27;s [number]. thanks. if it is not logged with a next step and a date, it did not happen. call procedures"><summary><span>Voicemail script and logging every call</span><span class="tag">Call procedures</span></summary><div class="body"><p class="when">Nobody answers. Leave a short message, then record the call.</p><ol><li>Keep the voicemail under 25 seconds: name, company, reason, benefit, number.</li><li>Say your phone number slowly, twice.</li><li>Log the outcome, the next step and the date immediately after the call.</li><li>Set the follow-up reminder before starting the next call.</li></ol><div class="say"><b>Say this</b><p id="s5">Hi [customer's name], this is <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> from <span class="tok" data-k="company" data-ph="[your company]">[your company]</span>. I&#x27;m calling about [one reason relevant to them]. I&#x27;ll try you again on [day]. You can reach me on [number], that&#x27;s [number]. Thanks.</p><button class="copy" data-target="s5" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> If it is not logged with a next step and a date, it did not happen.</p></div></details>
+</div>
+<div class="empty" id="empty" hidden><p><b>Nothing matches that search.</b><br>Try one word (like &ldquo;refund&rdquo;) or choose a different category. The full version covers many more situations.</p></div>
+
+<section class="upsell">
+<h2>Want the complete version?</h2>
+<p>The full Sales Knowledge Base gives your team a complete playbook (scripts, objection handling and call procedures) plus an Excel tracker, ready to customize for your company.</p>
+<a class="btn" href="https://payhip.com/b/VTmUN" target="_blank" rel="noopener">Get the full version</a>
+</section>
+</div></main>
+
+<footer><div class="wrap">
+<p>This free Lite Edition is a small sample of the full product. Use it and adapt it inside your own team. Please do not resell or redistribute it. Guidance is general; always follow your own company's policies and procedures.</p>
+<p>Created by <a href="https://kongianniou.github.io/" target="_blank" rel="noopener">Konstantina Gianniou</a> &middot; Data &amp; Process Analytics</p>
+</div></footer>
+
+<script>
+(function(){
+  var q=document.getElementById('q'),chips=[].slice.call(document.querySelectorAll('.chip')),
+      items=[].slice.call(document.querySelectorAll('.entry')),empty=document.getElementById('empty'),
+      count=document.getElementById('count'),cat='All';
+  function apply(){
+    var terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),n=0;
+    items.forEach(function(e){
+      var ok=(cat==='All'||e.dataset.cat===cat)&&terms.every(function(t){return e.dataset.text.indexOf(t)>-1});
+      e.hidden=!ok; if(ok)n++;
+    });
+    empty.hidden=n!==0;
+    count.textContent=n+' of '+items.length+' shown';
+  }
+  q.addEventListener('input',apply);
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    cat=c.dataset.cat; chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')}); apply();
+  })});
+  /* personalization */
+  var fields={agent:document.getElementById('agent'),company:document.getElementById('company')};
+  function tokens(){
+    [].forEach.call(document.querySelectorAll('.tok[data-k]'),function(t){
+      var f=fields[t.dataset.k]; if(!f) return;
+      t.textContent=f.value.trim()||t.dataset.ph;
+    });
+  }
+  Object.keys(fields).forEach(function(k){
+    try{var v=localStorage.getItem('lite_'+k); if(v) fields[k].value=v;}catch(e){}
+    fields[k].addEventListener('input',function(){
+      try{localStorage.setItem('lite_'+k,fields[k].value)}catch(e){}
+      tokens();
+    });
+  });
+  tokens();
+  /* copy buttons */
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){
+    b.addEventListener('click',function(){
+      var text=document.getElementById(b.dataset.target).textContent.trim();
+      function done(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1500)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+      function fallback(){var a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}
+    });
+  });
+  window.addEventListener('beforeprint',function(){items.forEach(function(e){e.open=true})});
+  apply();
+})();
+</script>
+</body>
+</html>

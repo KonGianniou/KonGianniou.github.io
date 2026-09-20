@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Base for Security Operations Centers: Free Lite Edition</title>
+<style>
+:root{--bg:#F5F6F8;--card:#FFFFFF;--ink:#16181D;--muted:#565C6B;--line:#DCDFE6;--accent:#1D4E89;--on-accent:#FFFFFF;--accent-text:#1D4E89;--soft:color-mix(in srgb,#1D4E89 8%,#fff)}
+@media (prefers-color-scheme:dark){:root{--bg:#13151A;--card:#1B1E25;--ink:#ECEEF2;--muted:#A5ABB9;--line:#2C303A;--accent-text:#8CC0FF;--soft:color-mix(in srgb,#1D4E89 22%,#1B1E25)}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.55;font-size:16px}
+a{color:var(--accent-text)}
+:focus-visible{outline:3px solid var(--accent-text);outline-offset:2px;border-radius:4px}
+header{background:var(--accent);color:var(--on-accent);padding:40px 20px 34px}
+.wrap{max-width:860px;margin:0 auto}
+.pill{display:inline-block;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:600;margin-bottom:14px}
+h1{margin:0 0 10px;font-size:clamp(1.8rem,4.2vw,2.7rem);line-height:1.12;letter-spacing:-.02em;font-weight:780;max-width:22ch}
+header p{margin:0;font-size:1.05rem;max-width:56ch;opacity:.95}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.search{width:100%;height:54px;font:inherit;font-size:1.05rem;padding:0 16px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.search:focus{border-color:var(--accent-text);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-text) 30%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.chip{font:inherit;font-size:.9rem;font-weight:600;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.count{margin-left:auto;font-size:.85rem;color:var(--muted)}
+main{padding:22px 20px 10px}
+.personalize{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:22px}
+.personalize strong{display:block;margin-bottom:8px}
+.personalize .row{display:flex;flex-wrap:wrap;gap:10px}
+.personalize label{flex:1 1 200px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.personalize input{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+details.entry{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+details.entry[open]{border-color:var(--accent-text)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;padding:15px 18px;font-weight:650;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;font-weight:400;color:var(--accent-text);margin-left:auto;padding-left:10px}
+details[open] summary::after{content:"–"}
+.tag{font-size:.78rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.body{padding:2px 18px 18px}
+.when{color:var(--muted);margin:0 0 12px}
+ol{margin:0 0 14px;padding-left:22px}
+ol li{margin-bottom:6px;padding-left:4px}
+.say{border-left:4px solid var(--accent);background:var(--soft);border-radius:0 8px 8px 0;padding:12px 14px;margin:0 0 12px}
+.say b{display:block;font-size:.85rem;margin-bottom:4px;color:var(--accent-text)}
+.say p{margin:0 0 10px;font-style:italic}
+.copy{font:inherit;font-size:.85rem;font-weight:600;padding:5px 12px;border-radius:7px;border:1.5px solid var(--accent-text);background:transparent;color:var(--accent-text);cursor:pointer}
+.copy:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.tip{margin:0;font-size:.92rem;color:var(--muted)}
+.tip b{color:var(--ink)}
+.tok{background:color-mix(in srgb,var(--accent-text) 16%,transparent);border-radius:4px;padding:0 3px;font-style:normal;font-weight:600}
+.empty{text-align:center;padding:36px 10px;color:var(--muted)}
+.upsell{background:var(--accent);color:var(--on-accent);border-radius:14px;padding:26px 24px;margin:26px 0}
+.upsell h2{margin:0 0 8px;font-size:1.35rem;letter-spacing:-.01em}
+.upsell p{margin:0 0 16px;max-width:60ch}
+.btn{display:inline-block;background:#fff;color:#16181D;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:9px}
+.btn:hover{background:#F1F3F7}
+footer{padding:6px 20px 44px;color:var(--muted);font-size:.85rem}
+footer p{margin:0 0 8px}
+@media print{header,.bar,.personalize,.upsell,.copy{display:none!important}body{background:#fff}details.entry{break-inside:avoid;border-color:#bbb}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="pill">Free Lite Edition</span>
+<h1>Knowledge Base for Security Operations Centers</h1>
+<p>Quick-reference procedures for alarm monitoring operators: burglar, fire, panic, CCTV and technical signals.</p>
+</div></header>
+
+<div class="bar"><div class="wrap">
+<input id="q" class="search" type="search" placeholder="Type an alarm: burglar, fire, panic, CCTV, power failure…" aria-label="Search this knowledge base" autocomplete="off">
+<div class="chips" id="chips">
+<button class="chip" aria-pressed="true" data-cat="All">All</button>
+<button class="chip" aria-pressed="false" data-cat="Alarm signals">Alarm signals</button>
+<button class="chip" aria-pressed="false" data-cat="CCTV &amp; technical">CCTV &amp; technical</button>
+<button class="chip" aria-pressed="false" data-cat="Logging &amp; handover">Logging &amp; handover</button>
+<span class="count" id="count" aria-live="polite"></span>
+</div>
+</div></div>
+
+<main><div class="wrap">
+<div class="personalize">
+<strong>Make the scripts yours</strong>
+<div class="row">
+<label>Your name<input id="agent" type="text" placeholder="e.g. Maria" autocomplete="off"></label>
+<label>Your company<input id="company" type="text" placeholder="e.g. Acme Ltd" autocomplete="off"></label>
+</div>
+</div>
+
+<div id="list">
+<details class="entry" data-cat="Alarm signals" data-text="burglar (intrusion) alarm an intrusion signal arrives from a monitored site: door, motion detector or glass-break zone. acknowledge the signal and note the site, zone, signal type and time. open the site instructions and check whether the site should be closed, or if someone is arming/disarming or on a maintenance schedule. verify: check cctv or audio if the site has it. call the site contact or keyholder and ask for the passcode; do not give details before it is verified. if the alarm is confirmed, or cannot be cleared under your procedure, dispatch the patrol or contact the police as the contract states. log every action with its time until the event is closed. hello, this is agent from the company monitoring center. we received an intrusion alarm at [site], zone [zone], at [time]. are you at the premises, and can you give me your passcode? never share alarm details with anyone who has not passed verification. alarm signals"><summary><span>Burglar (intrusion) alarm</span><span class="tag">Alarm signals</span></summary><div class="body"><p class="when">An intrusion signal arrives from a monitored site: door, motion detector or glass-break zone.</p><ol><li>Acknowledge the signal and note the site, zone, signal type and time.</li><li>Open the site instructions and check whether the site should be closed, or if someone is arming/disarming or on a maintenance schedule.</li><li>Verify: check CCTV or audio if the site has it.</li><li>Call the site contact or keyholder and ask for the passcode; do not give details before it is verified.</li><li>If the alarm is confirmed, or cannot be cleared under your procedure, dispatch the patrol or contact the police as the contract states.</li><li>Log every action with its time until the event is closed.</li></ol><div class="say"><b>Say this</b><p id="s0">Hello, this is <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> from the <span class="tok" data-k="company" data-ph="[your company]">[your company]</span> monitoring center. We received an intrusion alarm at [site], zone [zone], at [time]. Are you at the premises, and can you give me your passcode?</p><button class="copy" data-target="s0" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Never share alarm details with anyone who has not passed verification.</p></div></details>
+<details class="entry" data-cat="Alarm signals" data-text="fire alarm a fire or smoke signal arrives from a detector, sprinkler or manual call point. treat every one as real until cleared. acknowledge it immediately and note the site, zone or device type, and time. call the site contact right away to find out if there is smoke, fire or a known cause (for example a test or work in progress). if there is any confirmation of fire, or nobody can rule it out under your procedure, contact the fire service without delay. advise anyone on the line to leave the building and not to re-enter. notify the keyholder and the customer contacts, and log all times. this is agent from the company monitoring center. we have a fire alarm at [site], [zone/device]. can you see any smoke or fire? if you are in the building, please leave now and wait outside for the fire service. do not spend long investigating before calling the fire service. follow your contract timings. alarm signals"><summary><span>Fire alarm</span><span class="tag">Alarm signals</span></summary><div class="body"><p class="when">A fire or smoke signal arrives from a detector, sprinkler or manual call point. Treat every one as real until cleared.</p><ol><li>Acknowledge it immediately and note the site, zone or device type, and time.</li><li>Call the site contact right away to find out if there is smoke, fire or a known cause (for example a test or work in progress).</li><li>If there is any confirmation of fire, or nobody can rule it out under your procedure, contact the fire service without delay.</li><li>Advise anyone on the line to leave the building and not to re-enter.</li><li>Notify the keyholder and the customer contacts, and log all times.</li></ol><div class="say"><b>Say this</b><p id="s1">This is <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> from the <span class="tok" data-k="company" data-ph="[your company]">[your company]</span> monitoring center. We have a fire alarm at [site], [zone/device]. Can you see any smoke or fire? If you are in the building, please leave now and wait outside for the fire service.</p><button class="copy" data-target="s1" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Do not spend long investigating before calling the fire service. Follow your contract timings.</p></div></details>
+<details class="entry" data-cat="Alarm signals" data-text="panic or hold-up alarm a panic button or duress code is triggered. someone may be in danger, so this is the highest priority. act at once; this signal overrides anything else in the queue. check the site instructions. do not call the site back unless your procedure says to, as the caller may be under threat. contact the police immediately with the site address, alarm type and any known details. keep listening on any open audio line, and note what you hear. notify the keyholder and your supervisor per procedure, and log all times.  follow the site&#x27;s duress procedure exactly. never assume it is a false alarm. alarm signals"><summary><span>Panic or hold-up alarm</span><span class="tag">Alarm signals</span></summary><div class="body"><p class="when">A panic button or duress code is triggered. Someone may be in danger, so this is the highest priority.</p><ol><li>Act at once; this signal overrides anything else in the queue.</li><li>Check the site instructions. Do not call the site back unless your procedure says to, as the caller may be under threat.</li><li>Contact the police immediately with the site address, alarm type and any known details.</li><li>Keep listening on any open audio line, and note what you hear.</li><li>Notify the keyholder and your supervisor per procedure, and log all times.</li></ol><p class="tip"><b>Tip:</b> Follow the site&#x27;s duress procedure exactly. Never assume it is a false alarm.</p></div></details>
+<details class="entry" data-cat="CCTV &amp; technical" data-text="verifying an alarm with cctv you have an alarm and cameras at the site, and need to confirm whether it is real. open the cameras nearest to the alarm zone first, then the entrances and outer areas. look for people, vehicles, open doors, lights or damage, and note the time of what you see. save a snapshot or clip as evidence in line with your procedure. if you see an intrusion, dispatch and inform the police straight away, and keep watching. if you see nothing, check more cameras and still verify with the keyholder before closing. log exactly what you saw and when, including when you saw nothing.  only view the cameras you need. respect privacy and data protection rules. cctv &amp; technical"><summary><span>Verifying an alarm with CCTV</span><span class="tag">CCTV &amp; technical</span></summary><div class="body"><p class="when">You have an alarm and cameras at the site, and need to confirm whether it is real.</p><ol><li>Open the cameras nearest to the alarm zone first, then the entrances and outer areas.</li><li>Look for people, vehicles, open doors, lights or damage, and note the time of what you see.</li><li>Save a snapshot or clip as evidence in line with your procedure.</li><li>If you see an intrusion, dispatch and inform the police straight away, and keep watching.</li><li>If you see nothing, check more cameras and still verify with the keyholder before closing.</li><li>Log exactly what you saw and when, including when you saw nothing.</li></ol><p class="tip"><b>Tip:</b> Only view the cameras you need. Respect privacy and data protection rules.</p></div></details>
+<details class="entry" data-cat="CCTV &amp; technical" data-text="technical signals: power, battery, communication, tamper the panel reports a fault, not an intrusion: power failure, low battery, communication failure or tamper. identify the exact signal type and the site. check whether maintenance, a power cut or a test is planned. treat a tamper signal as a possible intrusion until you can rule it out. contact the site or the technician to arrange a check, as set in the site instructions. keep the event open and follow it up until the fault is cleared and the signal restored. hello, this is agent from company. your alarm system at [site] is reporting a [fault type]. could you check the panel, or shall we arrange for a technician? a site that stops sending its regular test signal can be a hidden fault. follow it up. cctv &amp; technical"><summary><span>Technical signals: power, battery, communication, tamper</span><span class="tag">CCTV &amp; technical</span></summary><div class="body"><p class="when">The panel reports a fault, not an intrusion: power failure, low battery, communication failure or tamper.</p><ol><li>Identify the exact signal type and the site.</li><li>Check whether maintenance, a power cut or a test is planned.</li><li>Treat a tamper signal as a possible intrusion until you can rule it out.</li><li>Contact the site or the technician to arrange a check, as set in the site instructions.</li><li>Keep the event open and follow it up until the fault is cleared and the signal restored.</li></ol><div class="say"><b>Say this</b><p id="s4">Hello, this is <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> from <span class="tok" data-k="company" data-ph="[your company]">[your company]</span>. Your alarm system at [site] is reporting a [fault type]. Could you check the panel, or shall we arrange for a technician?</p><button class="copy" data-target="s4" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> A site that stops sending its regular test signal can be a hidden fault. Follow it up.</p></div></details>
+<details class="entry" data-cat="Logging &amp; handover" data-text="false alarms: cause and log the alarm turns out to be harmless: user error, a pet, a faulty detector or a test. confirm the cause with the site contact if possible. record a cause code and describe it briefly. tell the customer what happened and how to avoid it (for example, correct arming or code use). flag repeat false alarms from the same site or zone for review or a technician visit. close the event only after the log is complete.  false alarms are data. review them by site, zone and time, and the patterns will show what to fix. logging &amp; handover"><summary><span>False alarms: cause and log</span><span class="tag">Logging &amp; handover</span></summary><div class="body"><p class="when">The alarm turns out to be harmless: user error, a pet, a faulty detector or a test.</p><ol><li>Confirm the cause with the site contact if possible.</li><li>Record a cause code and describe it briefly.</li><li>Tell the customer what happened and how to avoid it (for example, correct arming or code use).</li><li>Flag repeat false alarms from the same site or zone for review or a technician visit.</li><li>Close the event only after the log is complete.</li></ol><p class="tip"><b>Tip:</b> False alarms are data. Review them by site, zone and time, and the patterns will show what to fix.</p></div></details>
+<details class="entry" data-cat="Logging &amp; handover" data-text="shift handover note use at the end of every shift so nothing is lost between operators. list all open events with status and the next action. note sites on test, maintenance or with special instructions today. flag pending callbacks and dispatches that are still in progress. mention equipment or system issues in the control room. handover from agent. open events: [id, site, status, next action]. sites on test/maintenance: [list]. pending callbacks: [who, when]. issues: [system or equipment]. keep it short enough for the next shift to read in two minutes. logging &amp; handover"><summary><span>Shift handover note</span><span class="tag">Logging &amp; handover</span></summary><div class="body"><p class="when">Use at the end of every shift so nothing is lost between operators.</p><ol><li>List all open events with status and the next action.</li><li>Note sites on test, maintenance or with special instructions today.</li><li>Flag pending callbacks and dispatches that are still in progress.</li><li>Mention equipment or system issues in the control room.</li></ol><div class="say"><b>Say this</b><p id="s6">Handover from <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span>. Open events: [ID, site, status, next action]. Sites on test/maintenance: [list]. Pending callbacks: [who, when]. Issues: [system or equipment].</p><button class="copy" data-target="s6" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Keep it short enough for the next shift to read in two minutes.</p></div></details>
+</div>
+<div class="empty" id="empty" hidden><p><b>Nothing matches that search.</b><br>Try one word (like &ldquo;refund&rdquo;) or choose a different category. The full version covers many more situations.</p></div>
+
+<section class="upsell">
+<h2>Want the complete version?</h2>
+<p>The full SOC Knowledge Base organizes playbooks and incident-handling procedures for your whole control room in one place, ready to adapt to your sites, contracts and escalation rules.</p>
+<a class="btn" href="https://payhip.com/b/kRIVw" target="_blank" rel="noopener">Get the full version</a>
+</section>
+</div></main>
+
+<footer><div class="wrap">
+<p>This free Lite Edition is a small sample of the full product. Use it and adapt it inside your own team. Please do not resell or redistribute it. Guidance is general; always follow your own company's policies and procedures.</p>
+<p>Created by <a href="https://kongianniou.github.io/" target="_blank" rel="noopener">Konstantina Gianniou</a> &middot; Data &amp; Process Analytics</p>
+</div></footer>
+
+<script>
+(function(){
+  var q=document.getElementById('q'),chips=[].slice.call(document.querySelectorAll('.chip')),
+      items=[].slice.call(document.querySelectorAll('.entry')),empty=document.getElementById('empty'),
+      count=document.getElementById('count'),cat='All';
+  function apply(){
+    var terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),n=0;
+    items.forEach(function(e){
+      var ok=(cat==='All'||e.dataset.cat===cat)&&terms.every(function(t){return e.dataset.text.indexOf(t)>-1});
+      e.hidden=!ok; if(ok)n++;
+    });
+    empty.hidden=n!==0;
+    count.textContent=n+' of '+items.length+' shown';
+  }
+  q.addEventListener('input',apply);
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    cat=c.dataset.cat; chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')}); apply();
+  })});
+  /* personalization */
+  var fields={agent:document.getElementById('agent'),company:document.getElementById('company')};
+  function tokens(){
+    [].forEach.call(document.querySelectorAll('.tok[data-k]'),function(t){
+      var f=fields[t.dataset.k]; if(!f) return;
+      t.textContent=f.value.trim()||t.dataset.ph;
+    });
+  }
+  Object.keys(fields).forEach(function(k){
+    try{var v=localStorage.getItem('lite_'+k); if(v) fields[k].value=v;}catch(e){}
+    fields[k].addEventListener('input',function(){
+      try{localStorage.setItem('lite_'+k,fields[k].value)}catch(e){}
+      tokens();
+    });
+  });
+  tokens();
+  /* copy buttons */
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){
+    b.addEventListener('click',function(){
+      var text=document.getElementById(b.dataset.target).textContent.trim();
+      function done(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1500)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+      function fallback(){var a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}
+    });
+  });
+  window.addEventListener('beforeprint',function(){items.forEach(function(e){e.open=true})});
+  apply();
+})();
+</script>
+</body>
+</html>

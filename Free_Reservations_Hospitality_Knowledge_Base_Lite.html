@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Base for Reservations &amp; Hospitality Teams: Free Lite Edition</title>
+<style>
+:root{--bg:#F5F6F8;--card:#FFFFFF;--ink:#16181D;--muted:#565C6B;--line:#DCDFE6;--accent:#6A2C6B;--on-accent:#FFFFFF;--accent-text:#6A2C6B;--soft:color-mix(in srgb,#6A2C6B 8%,#fff)}
+@media (prefers-color-scheme:dark){:root{--bg:#13151A;--card:#1B1E25;--ink:#ECEEF2;--muted:#A5ABB9;--line:#2C303A;--accent-text:#E0A6E1;--soft:color-mix(in srgb,#6A2C6B 22%,#1B1E25)}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.55;font-size:16px}
+a{color:var(--accent-text)}
+:focus-visible{outline:3px solid var(--accent-text);outline-offset:2px;border-radius:4px}
+header{background:var(--accent);color:var(--on-accent);padding:40px 20px 34px}
+.wrap{max-width:860px;margin:0 auto}
+.pill{display:inline-block;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:600;margin-bottom:14px}
+h1{margin:0 0 10px;font-size:clamp(1.8rem,4.2vw,2.7rem);line-height:1.12;letter-spacing:-.02em;font-weight:780;max-width:22ch}
+header p{margin:0;font-size:1.05rem;max-width:56ch;opacity:.95}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.search{width:100%;height:54px;font:inherit;font-size:1.05rem;padding:0 16px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.search:focus{border-color:var(--accent-text);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-text) 30%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.chip{font:inherit;font-size:.9rem;font-weight:600;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.count{margin-left:auto;font-size:.85rem;color:var(--muted)}
+main{padding:22px 20px 10px}
+.personalize{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:22px}
+.personalize strong{display:block;margin-bottom:8px}
+.personalize .row{display:flex;flex-wrap:wrap;gap:10px}
+.personalize label{flex:1 1 200px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.personalize input{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+details.entry{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+details.entry[open]{border-color:var(--accent-text)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;padding:15px 18px;font-weight:650;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;font-weight:400;color:var(--accent-text);margin-left:auto;padding-left:10px}
+details[open] summary::after{content:"–"}
+.tag{font-size:.78rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.body{padding:2px 18px 18px}
+.when{color:var(--muted);margin:0 0 12px}
+ol{margin:0 0 14px;padding-left:22px}
+ol li{margin-bottom:6px;padding-left:4px}
+.say{border-left:4px solid var(--accent);background:var(--soft);border-radius:0 8px 8px 0;padding:12px 14px;margin:0 0 12px}
+.say b{display:block;font-size:.85rem;margin-bottom:4px;color:var(--accent-text)}
+.say p{margin:0 0 10px;font-style:italic}
+.copy{font:inherit;font-size:.85rem;font-weight:600;padding:5px 12px;border-radius:7px;border:1.5px solid var(--accent-text);background:transparent;color:var(--accent-text);cursor:pointer}
+.copy:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.tip{margin:0;font-size:.92rem;color:var(--muted)}
+.tip b{color:var(--ink)}
+.tok{background:color-mix(in srgb,var(--accent-text) 16%,transparent);border-radius:4px;padding:0 3px;font-style:normal;font-weight:600}
+.empty{text-align:center;padding:36px 10px;color:var(--muted)}
+.upsell{background:var(--accent);color:var(--on-accent);border-radius:14px;padding:26px 24px;margin:26px 0}
+.upsell h2{margin:0 0 8px;font-size:1.35rem;letter-spacing:-.01em}
+.upsell p{margin:0 0 16px;max-width:60ch}
+.btn{display:inline-block;background:#fff;color:#16181D;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:9px}
+.btn:hover{background:#F1F3F7}
+footer{padding:6px 20px 44px;color:var(--muted);font-size:.85rem}
+footer p{margin:0 0 8px}
+@media print{header,.bar,.personalize,.upsell,.copy{display:none!important}body{background:#fff}details.entry{break-inside:avoid;border-color:#bbb}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="pill">Free Lite Edition</span>
+<h1>Knowledge Base for Reservations &amp; Hospitality Teams</h1>
+<p>Consistent answers for agents taking bookings, changes and complaints.</p>
+</div></header>
+
+<div class="bar"><div class="wrap">
+<input id="q" class="search" type="search" placeholder="Type a situation: change booking, no availability, complaint…" aria-label="Search this knowledge base" autocomplete="off">
+<div class="chips" id="chips">
+<button class="chip" aria-pressed="true" data-cat="All">All</button>
+<button class="chip" aria-pressed="false" data-cat="Bookings">Bookings</button>
+<button class="chip" aria-pressed="false" data-cat="Changes">Changes</button>
+<button class="chip" aria-pressed="false" data-cat="Guest service">Guest service</button>
+<span class="count" id="count" aria-live="polite"></span>
+</div>
+</div></div>
+
+<main><div class="wrap">
+<div class="personalize">
+<strong>Make the scripts yours</strong>
+<div class="row">
+<label>Your name<input id="agent" type="text" placeholder="e.g. Maria" autocomplete="off"></label>
+<label>Your company<input id="company" type="text" placeholder="e.g. Acme Ltd" autocomplete="off"></label>
+</div>
+</div>
+
+<div id="list">
+<details class="entry" data-cat="Bookings" data-text="taking a new reservation every new booking, by phone, email or chat. greet warmly and ask for the dates or date and time. collect: name, phone and email, party size or guests, and any special requests. ask about dietary needs, accessibility and the occasion. state the deposit and cancellation policy clearly. repeat all details back and send a written confirmation. thank you for calling company, agent speaking. i&#x27;d be happy to help with your booking. what date and time were you thinking of, and for how many people? reading details back is the single best way to prevent no-shows and mistakes. bookings"><summary><span>Taking a new reservation</span><span class="tag">Bookings</span></summary><div class="body"><p class="when">Every new booking, by phone, email or chat.</p><ol><li>Greet warmly and ask for the dates or date and time.</li><li>Collect: name, phone and email, party size or guests, and any special requests.</li><li>Ask about dietary needs, accessibility and the occasion.</li><li>State the deposit and cancellation policy clearly.</li><li>Repeat all details back and send a written confirmation.</li></ol><div class="say"><b>Say this</b><p id="s0">Thank you for calling <span class="tok" data-k="company" data-ph="[your company]">[your company]</span>, <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> speaking. I&#x27;d be happy to help with your booking. What date and time were you thinking of, and for how many people?</p><button class="copy" data-target="s0" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Reading details back is the single best way to prevent no-shows and mistakes.</p></div></details>
+<details class="entry" data-cat="Bookings" data-text="no availability on the requested date the date or time the guest wants is fully booked. apologize, then immediately offer alternatives. suggest nearby times or dates, or another room or table type. offer to add them to the waiting list and explain how they will be contacted. confirm whichever option they choose in writing. i&#x27;m sorry, we&#x27;re fully booked at that time. i can offer you [option 1] or [option 2]. i can also add you to our waiting list and contact you if something opens up. never end with &quot;no&quot;. always end with an option. bookings"><summary><span>No availability on the requested date</span><span class="tag">Bookings</span></summary><div class="body"><p class="when">The date or time the guest wants is fully booked.</p><ol><li>Apologize, then immediately offer alternatives.</li><li>Suggest nearby times or dates, or another room or table type.</li><li>Offer to add them to the waiting list and explain how they will be contacted.</li><li>Confirm whichever option they choose in writing.</li></ol><div class="say"><b>Say this</b><p id="s1">I&#x27;m sorry, we&#x27;re fully booked at that time. I can offer you [option 1] or [option 2]. I can also add you to our waiting list and contact you if something opens up.</p><button class="copy" data-target="s1" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Never end with &quot;no&quot;. Always end with an option.</p></div></details>
+<details class="entry" data-cat="Changes" data-text="change or cancel a booking a guest asks to move or cancel an existing reservation. find the booking and verify the guest&#x27;s details. check the change and cancellation policy and how much notice they have given. offer to change the date before cancelling, if it suits them. explain any fee or deposit consequence clearly. send written confirmation and release the space. of course, i can help with that. let me find your booking. if it helps, i can also look at moving it to another date instead of cancelling. [replace with your own cancellation policy wording.] changes"><summary><span>Change or cancel a booking</span><span class="tag">Changes</span></summary><div class="body"><p class="when">A guest asks to move or cancel an existing reservation.</p><ol><li>Find the booking and verify the guest&#x27;s details.</li><li>Check the change and cancellation policy and how much notice they have given.</li><li>Offer to change the date before cancelling, if it suits them.</li><li>Explain any fee or deposit consequence clearly.</li><li>Send written confirmation and release the space.</li></ol><div class="say"><b>Say this</b><p id="s2">Of course, I can help with that. Let me find your booking. If it helps, I can also look at moving it to another date instead of cancelling.</p><button class="copy" data-target="s2" type="button">Copy script</button></div><p class="tip"><b>Note:</b> [Replace with your own cancellation policy wording.]</p></div></details>
+<details class="entry" data-cat="Guest service" data-text="overbooking: no room or table available you cannot honor a confirmed booking. this is high-stakes, so act fast and honestly. apologize sincerely and take responsibility; do not blame the system. present the solution first: an alternative nearby, an upgrade or a later slot. offer suitable compensation as per policy. escalate to a manager and follow up after the visit. i&#x27;m very sorry. we made a mistake and i want to fix it now. here&#x27;s what i can do for you: [solution]. i&#x27;d also like to [compensation]. guests forgive mistakes handled well far more than they forgive mistakes ignored. guest service"><summary><span>Overbooking: no room or table available</span><span class="tag">Guest service</span></summary><div class="body"><p class="when">You cannot honor a confirmed booking. This is high-stakes, so act fast and honestly.</p><ol><li>Apologize sincerely and take responsibility; do not blame the system.</li><li>Present the solution first: an alternative nearby, an upgrade or a later slot.</li><li>Offer suitable compensation as per policy.</li><li>Escalate to a manager and follow up after the visit.</li></ol><div class="say"><b>Say this</b><p id="s3">I&#x27;m very sorry. We made a mistake and I want to fix it now. Here&#x27;s what I can do for you: [solution]. I&#x27;d also like to [compensation].</p><button class="copy" data-target="s3" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Guests forgive mistakes handled well far more than they forgive mistakes ignored.</p></div></details>
+<details class="entry" data-cat="Guest service" data-text="handling a complaint (last method) a guest is unhappy about their stay, meal or service. listen: let them finish without interrupting, and take notes. apologize: for how they felt, even before the facts are established. solve: offer a specific solution, and ask if it works for them. thank: thank them for telling you and confirm follow-up. thank you for telling me, and i&#x27;m sorry that your experience wasn&#x27;t what it should have been. let me make sure i understand… [summary]. here&#x27;s what i can do: [solution]. does that work for you?  guest service"><summary><span>Handling a complaint (LAST method)</span><span class="tag">Guest service</span></summary><div class="body"><p class="when">A guest is unhappy about their stay, meal or service.</p><ol><li>Listen: let them finish without interrupting, and take notes.</li><li>Apologize: for how they felt, even before the facts are established.</li><li>Solve: offer a specific solution, and ask if it works for them.</li><li>Thank: thank them for telling you and confirm follow-up.</li></ol><div class="say"><b>Say this</b><p id="s4">Thank you for telling me, and I&#x27;m sorry that your experience wasn&#x27;t what it should have been. Let me make sure I understand… [summary]. Here&#x27;s what I can do: [solution]. Does that work for you?</p><button class="copy" data-target="s4" type="button">Copy script</button></div></div></details>
+<details class="entry" data-cat="Bookings" data-text="group booking or special occasion birthdays, weddings, corporate groups and other bookings that need extra planning. take the occasion, number of guests, date, time and budget. confirm one named contact person for the group. explain the deposit, final numbers deadline and menu or room options. send a written summary and set a reminder to confirm final numbers. congratulations, we&#x27;d love to host you. let me take a few details so we can make it special: how many guests, what date, and who will be our main contact?  bookings"><summary><span>Group booking or special occasion</span><span class="tag">Bookings</span></summary><div class="body"><p class="when">Birthdays, weddings, corporate groups and other bookings that need extra planning.</p><ol><li>Take the occasion, number of guests, date, time and budget.</li><li>Confirm one named contact person for the group.</li><li>Explain the deposit, final numbers deadline and menu or room options.</li><li>Send a written summary and set a reminder to confirm final numbers.</li></ol><div class="say"><b>Say this</b><p id="s5">Congratulations, we&#x27;d love to host you. Let me take a few details so we can make it special: how many guests, what date, and who will be our main contact?</p><button class="copy" data-target="s5" type="button">Copy script</button></div></div></details>
+</div>
+<div class="empty" id="empty" hidden><p><b>Nothing matches that search.</b><br>Try one word (like &ldquo;refund&rdquo;) or choose a different category. The full version covers many more situations.</p></div>
+
+<section class="upsell">
+<h2>Want the complete version?</h2>
+<p>The full Reservations &amp; Hospitality Knowledge Base helps your team respond consistently and quickly across many more booking, change and guest-service situations, ready to adapt to your property.</p>
+<a class="btn" href="https://payhip.com/b/GzCWZ" target="_blank" rel="noopener">Get the full version</a>
+</section>
+</div></main>
+
+<footer><div class="wrap">
+<p>This free Lite Edition is a small sample of the full product. Use it and adapt it inside your own team. Please do not resell or redistribute it. Guidance is general; always follow your own company's policies and procedures.</p>
+<p>Created by <a href="https://kongianniou.github.io/" target="_blank" rel="noopener">Konstantina Gianniou</a> &middot; Data &amp; Process Analytics</p>
+</div></footer>
+
+<script>
+(function(){
+  var q=document.getElementById('q'),chips=[].slice.call(document.querySelectorAll('.chip')),
+      items=[].slice.call(document.querySelectorAll('.entry')),empty=document.getElementById('empty'),
+      count=document.getElementById('count'),cat='All';
+  function apply(){
+    var terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),n=0;
+    items.forEach(function(e){
+      var ok=(cat==='All'||e.dataset.cat===cat)&&terms.every(function(t){return e.dataset.text.indexOf(t)>-1});
+      e.hidden=!ok; if(ok)n++;
+    });
+    empty.hidden=n!==0;
+    count.textContent=n+' of '+items.length+' shown';
+  }
+  q.addEventListener('input',apply);
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    cat=c.dataset.cat; chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')}); apply();
+  })});
+  /* personalization */
+  var fields={agent:document.getElementById('agent'),company:document.getElementById('company')};
+  function tokens(){
+    [].forEach.call(document.querySelectorAll('.tok[data-k]'),function(t){
+      var f=fields[t.dataset.k]; if(!f) return;
+      t.textContent=f.value.trim()||t.dataset.ph;
+    });
+  }
+  Object.keys(fields).forEach(function(k){
+    try{var v=localStorage.getItem('lite_'+k); if(v) fields[k].value=v;}catch(e){}
+    fields[k].addEventListener('input',function(){
+      try{localStorage.setItem('lite_'+k,fields[k].value)}catch(e){}
+      tokens();
+    });
+  });
+  tokens();
+  /* copy buttons */
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){
+    b.addEventListener('click',function(){
+      var text=document.getElementById(b.dataset.target).textContent.trim();
+      function done(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1500)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+      function fallback(){var a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}
+    });
+  });
+  window.addEventListener('beforeprint',function(){items.forEach(function(e){e.open=true})});
+  apply();
+})();
+</script>
+</body>
+</html>

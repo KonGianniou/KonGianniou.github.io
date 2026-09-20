@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Base for Telecom Customer Support: Free Lite Edition</title>
+<style>
+:root{--bg:#F5F6F8;--card:#FFFFFF;--ink:#16181D;--muted:#565C6B;--line:#DCDFE6;--accent:#3B3BA8;--on-accent:#FFFFFF;--accent-text:#3B3BA8;--soft:color-mix(in srgb,#3B3BA8 8%,#fff)}
+@media (prefers-color-scheme:dark){:root{--bg:#13151A;--card:#1B1E25;--ink:#ECEEF2;--muted:#A5ABB9;--line:#2C303A;--accent-text:#A5A8FF;--soft:color-mix(in srgb,#3B3BA8 22%,#1B1E25)}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.55;font-size:16px}
+a{color:var(--accent-text)}
+:focus-visible{outline:3px solid var(--accent-text);outline-offset:2px;border-radius:4px}
+header{background:var(--accent);color:var(--on-accent);padding:40px 20px 34px}
+.wrap{max-width:860px;margin:0 auto}
+.pill{display:inline-block;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:600;margin-bottom:14px}
+h1{margin:0 0 10px;font-size:clamp(1.8rem,4.2vw,2.7rem);line-height:1.12;letter-spacing:-.02em;font-weight:780;max-width:22ch}
+header p{margin:0;font-size:1.05rem;max-width:56ch;opacity:.95}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.search{width:100%;height:54px;font:inherit;font-size:1.05rem;padding:0 16px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.search:focus{border-color:var(--accent-text);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-text) 30%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.chip{font:inherit;font-size:.9rem;font-weight:600;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.count{margin-left:auto;font-size:.85rem;color:var(--muted)}
+main{padding:22px 20px 10px}
+.personalize{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:22px}
+.personalize strong{display:block;margin-bottom:8px}
+.personalize .row{display:flex;flex-wrap:wrap;gap:10px}
+.personalize label{flex:1 1 200px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.personalize input{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+details.entry{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+details.entry[open]{border-color:var(--accent-text)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;padding:15px 18px;font-weight:650;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;font-weight:400;color:var(--accent-text);margin-left:auto;padding-left:10px}
+details[open] summary::after{content:"–"}
+.tag{font-size:.78rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.body{padding:2px 18px 18px}
+.when{color:var(--muted);margin:0 0 12px}
+ol{margin:0 0 14px;padding-left:22px}
+ol li{margin-bottom:6px;padding-left:4px}
+.say{border-left:4px solid var(--accent);background:var(--soft);border-radius:0 8px 8px 0;padding:12px 14px;margin:0 0 12px}
+.say b{display:block;font-size:.85rem;margin-bottom:4px;color:var(--accent-text)}
+.say p{margin:0 0 10px;font-style:italic}
+.copy{font:inherit;font-size:.85rem;font-weight:600;padding:5px 12px;border-radius:7px;border:1.5px solid var(--accent-text);background:transparent;color:var(--accent-text);cursor:pointer}
+.copy:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.tip{margin:0;font-size:.92rem;color:var(--muted)}
+.tip b{color:var(--ink)}
+.tok{background:color-mix(in srgb,var(--accent-text) 16%,transparent);border-radius:4px;padding:0 3px;font-style:normal;font-weight:600}
+.empty{text-align:center;padding:36px 10px;color:var(--muted)}
+.upsell{background:var(--accent);color:var(--on-accent);border-radius:14px;padding:26px 24px;margin:26px 0}
+.upsell h2{margin:0 0 8px;font-size:1.35rem;letter-spacing:-.01em}
+.upsell p{margin:0 0 16px;max-width:60ch}
+.btn{display:inline-block;background:#fff;color:#16181D;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:9px}
+.btn:hover{background:#F1F3F7}
+footer{padding:6px 20px 44px;color:var(--muted);font-size:.85rem}
+footer p{margin:0 0 8px}
+@media print{header,.bar,.personalize,.upsell,.copy{display:none!important}body{background:#fff}details.entry{break-inside:avoid;border-color:#bbb}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="pill">Free Lite Edition</span>
+<h1>Knowledge Base for Telecom Customer Support</h1>
+<p>Quick answers for support agents handling internet, mobile and billing contacts.</p>
+</div></header>
+
+<div class="bar"><div class="wrap">
+<input id="q" class="search" type="search" placeholder="Type a customer problem: no internet, high bill, no signal…" aria-label="Search this knowledge base" autocomplete="off">
+<div class="chips" id="chips">
+<button class="chip" aria-pressed="true" data-cat="All">All</button>
+<button class="chip" aria-pressed="false" data-cat="Connectivity">Connectivity</button>
+<button class="chip" aria-pressed="false" data-cat="Billing">Billing</button>
+<button class="chip" aria-pressed="false" data-cat="Account">Account</button>
+<span class="count" id="count" aria-live="polite"></span>
+</div>
+</div></div>
+
+<main><div class="wrap">
+<div class="personalize">
+<strong>Make the scripts yours</strong>
+<div class="row">
+<label>Your name<input id="agent" type="text" placeholder="e.g. Maria" autocomplete="off"></label>
+<label>Your company<input id="company" type="text" placeholder="e.g. Acme Ltd" autocomplete="off"></label>
+</div>
+</div>
+
+<div id="list">
+<details class="entry" data-cat="Connectivity" data-text="no internet connection customer reports that their home internet is completely down. check for a known outage in their area before troubleshooting. ask what the router lights show (power, internet, wi-fi). have them switch the router off for 30 seconds and back on; wait 3 minutes. check cables are firmly connected, then test one device by cable. if still down, create a ticket or book a technician per your process, and confirm the reference number. i&#x27;m sorry you&#x27;re without internet, agent here at company, and i&#x27;ll help you get this sorted. first, let me check if there&#x27;s an issue in your area. always check for an outage first. it saves the customer a lot of unnecessary steps. connectivity"><summary><span>No internet connection</span><span class="tag">Connectivity</span></summary><div class="body"><p class="when">Customer reports that their home internet is completely down.</p><ol><li>Check for a known outage in their area before troubleshooting.</li><li>Ask what the router lights show (power, internet, Wi-Fi).</li><li>Have them switch the router off for 30 seconds and back on; wait 3 minutes.</li><li>Check cables are firmly connected, then test one device by cable.</li><li>If still down, create a ticket or book a technician per your process, and confirm the reference number.</li></ol><div class="say"><b>Say this</b><p id="s0">I&#x27;m sorry you&#x27;re without internet, <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> here at <span class="tok" data-k="company" data-ph="[your company]">[your company]</span>, and I&#x27;ll help you get this sorted. First, let me check if there&#x27;s an issue in your area.</p><button class="copy" data-target="s0" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Always check for an outage first. It saves the customer a lot of unnecessary steps.</p></div></details>
+<details class="entry" data-cat="Connectivity" data-text="slow internet speed the connection works but is slower than expected or drops during use. ask if it is slow on wi-fi, by cable, or both, and at what times. ask them to run a speed test on a device by cable and note the result. restart the router and check how many devices are streaming or downloading. if wi-fi only: suggest moving closer or using the 5 ghz network if available. if a wired test is well below their plan speed after a restart, escalate with the test results. thanks for that. to find where the slowdown is, could you run a speed test with a device plugged into the router by cable and tell me the numbers? wi-fi problems and line problems look the same to a customer. the cable test separates them. connectivity"><summary><span>Slow internet speed</span><span class="tag">Connectivity</span></summary><div class="body"><p class="when">The connection works but is slower than expected or drops during use.</p><ol><li>Ask if it is slow on Wi-Fi, by cable, or both, and at what times.</li><li>Ask them to run a speed test on a device by cable and note the result.</li><li>Restart the router and check how many devices are streaming or downloading.</li><li>If Wi-Fi only: suggest moving closer or using the 5 GHz network if available.</li><li>If a wired test is well below their plan speed after a restart, escalate with the test results.</li></ol><div class="say"><b>Say this</b><p id="s1">Thanks for that. To find where the slowdown is, could you run a speed test with a device plugged into the router by cable and tell me the numbers?</p><button class="copy" data-target="s1" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Wi-Fi problems and line problems look the same to a customer. The cable test separates them.</p></div></details>
+<details class="entry" data-cat="Connectivity" data-text="mobile: no signal or no data phone shows no service, or calls work but mobile data does not. check for a network outage and the account status (active, not suspended). ask them to check airplane mode is off and mobile data is on. have them restart the phone and re-seat the sim card. check roaming and network selection settings if abroad. if still failing, arrange a sim replacement or escalate. let&#x27;s go through a few quick checks together. could you tell me whether the phone shows any bars, and whether airplane mode is off?  connectivity"><summary><span>Mobile: no signal or no data</span><span class="tag">Connectivity</span></summary><div class="body"><p class="when">Phone shows no service, or calls work but mobile data does not.</p><ol><li>Check for a network outage and the account status (active, not suspended).</li><li>Ask them to check airplane mode is off and mobile data is on.</li><li>Have them restart the phone and re-seat the SIM card.</li><li>Check roaming and network selection settings if abroad.</li><li>If still failing, arrange a SIM replacement or escalate.</li></ol><div class="say"><b>Say this</b><p id="s2">Let&#x27;s go through a few quick checks together. Could you tell me whether the phone shows any bars, and whether airplane mode is off?</p><button class="copy" data-target="s2" type="button">Copy script</button></div></div></details>
+<details class="entry" data-cat="Billing" data-text="bill higher than expected customer is surprised or upset by the amount. verify the customer&#x27;s identity before discussing the bill. open the current and previous bill side by side. look for the usual causes: pro-rated charges, one-off fees, usage outside the plan, an ended promotion. explain the difference line by line in plain language. if there is an error, correct it or escalate; if not, explain options (a cheaper plan, spend alert). i understand a higher bill is stressful. let me look at it with you and see exactly what changed compared with last month. do not blame the customer. show the lines and let the numbers explain. billing"><summary><span>Bill higher than expected</span><span class="tag">Billing</span></summary><div class="body"><p class="when">Customer is surprised or upset by the amount.</p><ol><li>Verify the customer&#x27;s identity before discussing the bill.</li><li>Open the current and previous bill side by side.</li><li>Look for the usual causes: pro-rated charges, one-off fees, usage outside the plan, an ended promotion.</li><li>Explain the difference line by line in plain language.</li><li>If there is an error, correct it or escalate; if not, explain options (a cheaper plan, spend alert).</li></ol><div class="say"><b>Say this</b><p id="s3">I understand a higher bill is stressful. Let me look at it with you and see exactly what changed compared with last month.</p><button class="copy" data-target="s3" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Do not blame the customer. Show the lines and let the numbers explain.</p></div></details>
+<details class="entry" data-cat="Account" data-text="verifying identity before changes any request to view or change account details, plans or payment information. ask for the identifiers your company requires (for example name, address and date of birth) before sharing anything. never ask for or accept full passwords or pins. if verification fails, offer a safe alternative such as a store visit or a call-back to the number on file. note in the account that verification was completed. to protect your account, i need to confirm a few details before i can make changes. can i ask you to verify [identifier]? [replace with your company&#x27;s required identifiers and policy.] account"><summary><span>Verifying identity before changes</span><span class="tag">Account</span></summary><div class="body"><p class="when">Any request to view or change account details, plans or payment information.</p><ol><li>Ask for the identifiers your company requires (for example name, address and date of birth) before sharing anything.</li><li>Never ask for or accept full passwords or PINs.</li><li>If verification fails, offer a safe alternative such as a store visit or a call-back to the number on file.</li><li>Note in the account that verification was completed.</li></ol><div class="say"><b>Say this</b><p id="s4">To protect your account, I need to confirm a few details before I can make changes. Can I ask you to verify [identifier]?</p><button class="copy" data-target="s4" type="button">Copy script</button></div><p class="tip"><b>Note:</b> [Replace with your company&#x27;s required identifiers and policy.]</p></div></details>
+<details class="entry" data-cat="Account" data-text="customer wants to cancel customer says they want to end their service. ask why. the reason decides what you can offer. if the issue can be fixed (price, speed, coverage), offer the relevant solution once, without pressure. if they still want to cancel, explain notice period and any fees clearly, per your contract policy. confirm the cancellation date and reference in writing. i&#x27;m sorry to hear that. may i ask what&#x27;s led to the decision? i&#x27;d like to see whether there&#x27;s anything we can do before we proceed. never hide the cancellation process. a smooth exit is good for the brand and for reviews. account"><summary><span>Customer wants to cancel</span><span class="tag">Account</span></summary><div class="body"><p class="when">Customer says they want to end their service.</p><ol><li>Ask why. The reason decides what you can offer.</li><li>If the issue can be fixed (price, speed, coverage), offer the relevant solution once, without pressure.</li><li>If they still want to cancel, explain notice period and any fees clearly, per your contract policy.</li><li>Confirm the cancellation date and reference in writing.</li></ol><div class="say"><b>Say this</b><p id="s5">I&#x27;m sorry to hear that. May I ask what&#x27;s led to the decision? I&#x27;d like to see whether there&#x27;s anything we can do before we proceed.</p><button class="copy" data-target="s5" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Never hide the cancellation process. A smooth exit is good for the brand and for reviews.</p></div></details>
+</div>
+<div class="empty" id="empty" hidden><p><b>Nothing matches that search.</b><br>Try one word (like &ldquo;refund&rdquo;) or choose a different category. The full version covers many more situations.</p></div>
+
+<section class="upsell">
+<h2>Want the complete version?</h2>
+<p>The full Telecom Knowledge Base gives your team a complete, structured set of procedures and answers, easy to find during every interaction and ready to adapt to your services.</p>
+<a class="btn" href="https://payhip.com/b/qD2L5" target="_blank" rel="noopener">Get the full version</a>
+</section>
+</div></main>
+
+<footer><div class="wrap">
+<p>This free Lite Edition is a small sample of the full product. Use it and adapt it inside your own team. Please do not resell or redistribute it. Guidance is general; always follow your own company's policies and procedures.</p>
+<p>Created by <a href="https://kongianniou.github.io/" target="_blank" rel="noopener">Konstantina Gianniou</a> &middot; Data &amp; Process Analytics</p>
+</div></footer>
+
+<script>
+(function(){
+  var q=document.getElementById('q'),chips=[].slice.call(document.querySelectorAll('.chip')),
+      items=[].slice.call(document.querySelectorAll('.entry')),empty=document.getElementById('empty'),
+      count=document.getElementById('count'),cat='All';
+  function apply(){
+    var terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),n=0;
+    items.forEach(function(e){
+      var ok=(cat==='All'||e.dataset.cat===cat)&&terms.every(function(t){return e.dataset.text.indexOf(t)>-1});
+      e.hidden=!ok; if(ok)n++;
+    });
+    empty.hidden=n!==0;
+    count.textContent=n+' of '+items.length+' shown';
+  }
+  q.addEventListener('input',apply);
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    cat=c.dataset.cat; chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')}); apply();
+  })});
+  /* personalization */
+  var fields={agent:document.getElementById('agent'),company:document.getElementById('company')};
+  function tokens(){
+    [].forEach.call(document.querySelectorAll('.tok[data-k]'),function(t){
+      var f=fields[t.dataset.k]; if(!f) return;
+      t.textContent=f.value.trim()||t.dataset.ph;
+    });
+  }
+  Object.keys(fields).forEach(function(k){
+    try{var v=localStorage.getItem('lite_'+k); if(v) fields[k].value=v;}catch(e){}
+    fields[k].addEventListener('input',function(){
+      try{localStorage.setItem('lite_'+k,fields[k].value)}catch(e){}
+      tokens();
+    });
+  });
+  tokens();
+  /* copy buttons */
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){
+    b.addEventListener('click',function(){
+      var text=document.getElementById(b.dataset.target).textContent.trim();
+      function done(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1500)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+      function fallback(){var a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}
+    });
+  });
+  window.addEventListener('beforeprint',function(){items.forEach(function(e){e.open=true})});
+  apply();
+})();
+</script>
+</body>
+</html>
