@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Base for Food Delivery Customer Service: Free Lite Edition</title>
+<style>
+:root{--bg:#F5F6F8;--card:#FFFFFF;--ink:#16181D;--muted:#565C6B;--line:#DCDFE6;--accent:#B3261E;--on-accent:#FFFFFF;--accent-text:#B3261E;--soft:color-mix(in srgb,#B3261E 8%,#fff)}
+@media (prefers-color-scheme:dark){:root{--bg:#13151A;--card:#1B1E25;--ink:#ECEEF2;--muted:#A5ABB9;--line:#2C303A;--accent-text:#FF9A93;--soft:color-mix(in srgb,#B3261E 22%,#1B1E25)}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.55;font-size:16px}
+a{color:var(--accent-text)}
+:focus-visible{outline:3px solid var(--accent-text);outline-offset:2px;border-radius:4px}
+header{background:var(--accent);color:var(--on-accent);padding:40px 20px 34px}
+.wrap{max-width:860px;margin:0 auto}
+.pill{display:inline-block;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:600;margin-bottom:14px}
+h1{margin:0 0 10px;font-size:clamp(1.8rem,4.2vw,2.7rem);line-height:1.12;letter-spacing:-.02em;font-weight:780;max-width:22ch}
+header p{margin:0;font-size:1.05rem;max-width:56ch;opacity:.95}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.search{width:100%;height:54px;font:inherit;font-size:1.05rem;padding:0 16px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.search:focus{border-color:var(--accent-text);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-text) 30%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.chip{font:inherit;font-size:.9rem;font-weight:600;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.count{margin-left:auto;font-size:.85rem;color:var(--muted)}
+main{padding:22px 20px 10px}
+.personalize{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:22px}
+.personalize strong{display:block;margin-bottom:8px}
+.personalize .row{display:flex;flex-wrap:wrap;gap:10px}
+.personalize label{flex:1 1 200px;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.personalize input{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+details.entry{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+details.entry[open]{border-color:var(--accent-text)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px;align-items:center;padding:15px 18px;font-weight:650;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;font-weight:400;color:var(--accent-text);margin-left:auto;padding-left:10px}
+details[open] summary::after{content:"–"}
+.tag{font-size:.78rem;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.body{padding:2px 18px 18px}
+.when{color:var(--muted);margin:0 0 12px}
+ol{margin:0 0 14px;padding-left:22px}
+ol li{margin-bottom:6px;padding-left:4px}
+.say{border-left:4px solid var(--accent);background:var(--soft);border-radius:0 8px 8px 0;padding:12px 14px;margin:0 0 12px}
+.say b{display:block;font-size:.85rem;margin-bottom:4px;color:var(--accent-text)}
+.say p{margin:0 0 10px;font-style:italic}
+.copy{font:inherit;font-size:.85rem;font-weight:600;padding:5px 12px;border-radius:7px;border:1.5px solid var(--accent-text);background:transparent;color:var(--accent-text);cursor:pointer}
+.copy:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.tip{margin:0;font-size:.92rem;color:var(--muted)}
+.tip b{color:var(--ink)}
+.tok{background:color-mix(in srgb,var(--accent-text) 16%,transparent);border-radius:4px;padding:0 3px;font-style:normal;font-weight:600}
+.empty{text-align:center;padding:36px 10px;color:var(--muted)}
+.upsell{background:var(--accent);color:var(--on-accent);border-radius:14px;padding:26px 24px;margin:26px 0}
+.upsell h2{margin:0 0 8px;font-size:1.35rem;letter-spacing:-.01em}
+.upsell p{margin:0 0 16px;max-width:60ch}
+.btn{display:inline-block;background:#fff;color:#16181D;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:9px}
+.btn:hover{background:#F1F3F7}
+footer{padding:6px 20px 44px;color:var(--muted);font-size:.85rem}
+footer p{margin:0 0 8px}
+@media print{header,.bar,.personalize,.upsell,.copy{display:none!important}body{background:#fff}details.entry{break-inside:avoid;border-color:#bbb}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="pill">Free Lite Edition</span>
+<h1>Knowledge Base for Food Delivery Customer Service</h1>
+<p>Quick answers for agents handling late, missing, wrong and cold orders.</p>
+</div></header>
+
+<div class="bar"><div class="wrap">
+<input id="q" class="search" type="search" placeholder="Type an issue: late order, missing item, allergy…" aria-label="Search this knowledge base" autocomplete="off">
+<div class="chips" id="chips">
+<button class="chip" aria-pressed="true" data-cat="All">All</button>
+<button class="chip" aria-pressed="false" data-cat="Order problems">Order problems</button>
+<button class="chip" aria-pressed="false" data-cat="Refunds">Refunds</button>
+<button class="chip" aria-pressed="false" data-cat="Safety">Safety</button>
+<span class="count" id="count" aria-live="polite"></span>
+</div>
+</div></div>
+
+<main><div class="wrap">
+<div class="personalize">
+<strong>Make the scripts yours</strong>
+<div class="row">
+<label>Your name<input id="agent" type="text" placeholder="e.g. Maria" autocomplete="off"></label>
+<label>Your company<input id="company" type="text" placeholder="e.g. Acme Ltd" autocomplete="off"></label>
+</div>
+</div>
+
+<div id="list">
+<details class="entry" data-cat="Order problems" data-text="order is late customer contacts you because the order has not arrived within the estimated time. open the live order status and see where the courier is and the latest eta. apologize and tell them the real eta, not a guess. if the courier is stuck or unassigned, escalate to dispatch to reassign. if the delay passes your threshold, offer compensation per policy and record it. i&#x27;m really sorry your order is late, agent from company here. i can see it right now: [status and eta]. let me [action] so you get it as fast as possible. give the customer a concrete next update time, for example: &quot;i&#x27;ll check again in 10 minutes.&quot; order problems"><summary><span>Order is late</span><span class="tag">Order problems</span></summary><div class="body"><p class="when">Customer contacts you because the order has not arrived within the estimated time.</p><ol><li>Open the live order status and see where the courier is and the latest ETA.</li><li>Apologize and tell them the real ETA, not a guess.</li><li>If the courier is stuck or unassigned, escalate to dispatch to reassign.</li><li>If the delay passes your threshold, offer compensation per policy and record it.</li></ol><div class="say"><b>Say this</b><p id="s0">I&#x27;m really sorry your order is late, <span class="tok" data-k="agent" data-ph="[your name]">[your name]</span> from <span class="tok" data-k="company" data-ph="[your company]">[your company]</span> here. I can see it right now: [status and ETA]. Let me [action] so you get it as fast as possible.</p><button class="copy" data-target="s0" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Give the customer a concrete next update time, for example: &quot;I&#x27;ll check again in 10 minutes.&quot;</p></div></details>
+<details class="entry" data-cat="Order problems" data-text="missing item the order arrived but something is not in the bag. ask which item is missing and check it against the order. apologize and confirm you will fix it. refund or credit the missing item according to your policy (photo evidence if required). log the restaurant and item so the partner can be given feedback. i&#x27;m sorry about that. i can see [item] was on your order. i&#x27;ll [refund/credit] it right away, and i&#x27;ll make sure the restaurant is told.  order problems"><summary><span>Missing item</span><span class="tag">Order problems</span></summary><div class="body"><p class="when">The order arrived but something is not in the bag.</p><ol><li>Ask which item is missing and check it against the order.</li><li>Apologize and confirm you will fix it.</li><li>Refund or credit the missing item according to your policy (photo evidence if required).</li><li>Log the restaurant and item so the partner can be given feedback.</li></ol><div class="say"><b>Say this</b><p id="s1">I&#x27;m sorry about that. I can see [item] was on your order. I&#x27;ll [refund/credit] it right away, and I&#x27;ll make sure the restaurant is told.</p><button class="copy" data-target="s1" type="button">Copy script</button></div></div></details>
+<details class="entry" data-cat="Order problems" data-text="wrong order delivered customer received food that is not theirs or not what they ordered. confirm the order number and what they received. check whether the error is the restaurant&#x27;s, the courier&#x27;s or a mix-up. offer a remake or a full refund, depending on your policy and time available. tell them whether they need to return anything (usually not). i&#x27;m sorry we got that wrong. let&#x27;s put it right. i can [send a new order / refund the full amount]. which would you prefer?  order problems"><summary><span>Wrong order delivered</span><span class="tag">Order problems</span></summary><div class="body"><p class="when">Customer received food that is not theirs or not what they ordered.</p><ol><li>Confirm the order number and what they received.</li><li>Check whether the error is the restaurant&#x27;s, the courier&#x27;s or a mix-up.</li><li>Offer a remake or a full refund, depending on your policy and time available.</li><li>Tell them whether they need to return anything (usually not).</li></ol><div class="say"><b>Say this</b><p id="s2">I&#x27;m sorry we got that wrong. Let&#x27;s put it right. I can [send a new order / refund the full amount]. Which would you prefer?</p><button class="copy" data-target="s2" type="button">Copy script</button></div></div></details>
+<details class="entry" data-cat="Refunds" data-text="refund or credit: quick decision guide you need to decide how to compensate, and who is responsible. identify who caused the issue: restaurant, courier or platform. check the customer&#x27;s recent history for repeat patterns. apply the matching policy: full refund, partial refund or credit. document the reason and the decision so it can be reviewed.  [replace the thresholds with your own policy. the full version includes editable decision tables.] refunds"><summary><span>Refund or credit: quick decision guide</span><span class="tag">Refunds</span></summary><div class="body"><p class="when">You need to decide how to compensate, and who is responsible.</p><ol><li>Identify who caused the issue: restaurant, courier or platform.</li><li>Check the customer&#x27;s recent history for repeat patterns.</li><li>Apply the matching policy: full refund, partial refund or credit.</li><li>Document the reason and the decision so it can be reviewed.</li></ol><p class="tip"><b>Note:</b> [Replace the thresholds with your own policy. The full version includes editable decision tables.]</p></div></details>
+<details class="entry" data-cat="Order problems" data-text="food arrived cold or poor quality customer is unhappy with temperature or quality. apologize without arguing about whose fault it was. ask what was wrong and, if your policy needs it, request a photo. offer the appropriate compensation. record the restaurant and issue for quality monitoring. i&#x27;m sorry your meal wasn&#x27;t what you expected. thanks for telling us. i&#x27;d like to make it right, so could you tell me a bit more about what happened?  order problems"><summary><span>Food arrived cold or poor quality</span><span class="tag">Order problems</span></summary><div class="body"><p class="when">Customer is unhappy with temperature or quality.</p><ol><li>Apologize without arguing about whose fault it was.</li><li>Ask what was wrong and, if your policy needs it, request a photo.</li><li>Offer the appropriate compensation.</li><li>Record the restaurant and issue for quality monitoring.</li></ol><div class="say"><b>Say this</b><p id="s4">I&#x27;m sorry your meal wasn&#x27;t what you expected. Thanks for telling us. I&#x27;d like to make it right, so could you tell me a bit more about what happened?</p><button class="copy" data-target="s4" type="button">Copy script</button></div></div></details>
+<details class="entry" data-cat="Safety" data-text="allergy or food safety concern customer reports an allergic reaction, possible contamination or foreign object. always treat as high priority. take it seriously and stay calm; do not speculate about the cause. if they describe serious symptoms, tell them to seek medical help immediately. record the order, food item, what was found or eaten, and symptoms. escalate straight away to your safety or quality team per procedure. do not promise outcomes; confirm someone will follow up. thank you for telling us. your health comes first. if you have any serious symptoms, please contact a doctor or emergency services now. i&#x27;m noting all the details and passing this to our safety team right away. never handle this as a normal refund case. safety"><summary><span>Allergy or food safety concern</span><span class="tag">Safety</span></summary><div class="body"><p class="when">Customer reports an allergic reaction, possible contamination or foreign object. Always treat as high priority.</p><ol><li>Take it seriously and stay calm; do not speculate about the cause.</li><li>If they describe serious symptoms, tell them to seek medical help immediately.</li><li>Record the order, food item, what was found or eaten, and symptoms.</li><li>Escalate straight away to your safety or quality team per procedure.</li><li>Do not promise outcomes; confirm someone will follow up.</li></ol><div class="say"><b>Say this</b><p id="s5">Thank you for telling us. Your health comes first. If you have any serious symptoms, please contact a doctor or emergency services now. I&#x27;m noting all the details and passing this to our safety team right away.</p><button class="copy" data-target="s5" type="button">Copy script</button></div><p class="tip"><b>Tip:</b> Never handle this as a normal refund case.</p></div></details>
+</div>
+<div class="empty" id="empty" hidden><p><b>Nothing matches that search.</b><br>Try one word (like &ldquo;refund&rdquo;) or choose a different category. The full version covers many more situations.</p></div>
+
+<section class="upsell">
+<h2>Want the complete version?</h2>
+<p>The full Food Delivery Knowledge Base gives your team clear procedures and fast lookup for the full range of order, refund and delivery situations, ready to adapt to your policies.</p>
+<a class="btn" href="https://payhip.com/b/VkHqT" target="_blank" rel="noopener">Get the full version</a>
+</section>
+</div></main>
+
+<footer><div class="wrap">
+<p>This free Lite Edition is a small sample of the full product. Use it and adapt it inside your own team. Please do not resell or redistribute it. Guidance is general; always follow your own company's policies and procedures.</p>
+<p>Created by <a href="https://kongianniou.github.io/" target="_blank" rel="noopener">Konstantina Gianniou</a> &middot; Data &amp; Process Analytics</p>
+</div></footer>
+
+<script>
+(function(){
+  var q=document.getElementById('q'),chips=[].slice.call(document.querySelectorAll('.chip')),
+      items=[].slice.call(document.querySelectorAll('.entry')),empty=document.getElementById('empty'),
+      count=document.getElementById('count'),cat='All';
+  function apply(){
+    var terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),n=0;
+    items.forEach(function(e){
+      var ok=(cat==='All'||e.dataset.cat===cat)&&terms.every(function(t){return e.dataset.text.indexOf(t)>-1});
+      e.hidden=!ok; if(ok)n++;
+    });
+    empty.hidden=n!==0;
+    count.textContent=n+' of '+items.length+' shown';
+  }
+  q.addEventListener('input',apply);
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    cat=c.dataset.cat; chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')}); apply();
+  })});
+  /* personalization */
+  var fields={agent:document.getElementById('agent'),company:document.getElementById('company')};
+  function tokens(){
+    [].forEach.call(document.querySelectorAll('.tok[data-k]'),function(t){
+      var f=fields[t.dataset.k]; if(!f) return;
+      t.textContent=f.value.trim()||t.dataset.ph;
+    });
+  }
+  Object.keys(fields).forEach(function(k){
+    try{var v=localStorage.getItem('lite_'+k); if(v) fields[k].value=v;}catch(e){}
+    fields[k].addEventListener('input',function(){
+      try{localStorage.setItem('lite_'+k,fields[k].value)}catch(e){}
+      tokens();
+    });
+  });
+  tokens();
+  /* copy buttons */
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){
+    b.addEventListener('click',function(){
+      var text=document.getElementById(b.dataset.target).textContent.trim();
+      function done(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1500)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+      function fallback(){var a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}
+    });
+  });
+  window.addEventListener('beforeprint',function(){items.forEach(function(e){e.open=true})});
+  apply();
+})();
+</script>
+</body>
+</html>
